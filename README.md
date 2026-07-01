@@ -1,33 +1,41 @@
 # Data-Science-Final-Project
-# Financial Fraud Detection Using R
+# PSX Stock Price Prediction and Analysis
 
-This is a simple interactive program built in Python that helps analyze transactions and identify potential financial fraud based on basic rules. It takes user input, evaluates the risk, generates a report, and shows visual plots.
+This project performs Data Preprocessing, Exploratory Data Analysis (EDA), and Machine Learning-based regression modeling to analyze and predict stock prices using Pakistan Stock Exchange (PSX) data. 
 
-## How it Works
+The project evaluates multiple regression algorithms to find the best-performing model for continuous stock price prediction.
 
-The script evaluates each transaction and flags it as "Fraud" if it meets any of the following conditions:
-* The transaction amount is greater than 100,000.
-* The transaction time is between late night/early morning hours (0 to 4).
-* The location is specified as "Foreign".
+## Tech Stack and Libraries
+The following Python libraries are used in this project:
+* Data Manipulation: pandas, numpy
+* Data Visualization: matplotlib, seaborn
+* Machine Learning (Scikit-Learn):
+    * train_test_split, StandardScaler, LabelEncoder
+    * Models: LinearRegression, DecisionTreeRegressor, RandomForestRegressor, KNeighborsRegressor, GradientBoostingRegressor
+    * Metrics: mean_absolute_error, mean_squared_error, r2_score
 
-If none of these conditions are met, the transaction is marked as "Normal".
+## Project Workflow
 
-## Project Structure
+### 1. Data Cleaning and Preprocessing
+* Handling missing values (null values treatment).
+* Correcting data types (converting objects to numerical features where necessary).
+* Feature encoding of categorical columns (Sector and Company Name) using LabelEncoder.
 
-* **CAF PROJECT.R**: The main R script containing the source code for data input, logic evaluation, and chart generation.
+### 2. Exploratory Data Analysis (EDA)
+* Visualizing stock trends, distributions, and correlation matrices using seaborn and matplotlib.
+* Identifying key features influencing stock prices.
 
-## How to Run
+### 3. Feature Scaling and Split
+* Splitting the dataset into an 80% Training set and a 20% Testing set.
+* Standardizing features using StandardScaler to bring all numerical inputs to a uniform scale.
 
-1. Make sure you have R or RStudio installed on your computer.
-2. Open your terminal, command prompt, or R console.
-3. Run the script using the following command:
+### 4. Model Training and Evaluation
+We trained and evaluated five different regression models based on Mean Absolute Error (MAE), Mean Squared Error (MSE), and R2 Score:
+* Linear Regression
+* Decision Tree Regressor
+* Random Forest Regressor
+* K-Neighbors Regressor
+* Gradient Boosting Regressor
 
-   Rscript "CAF PROJECT.R"
-
-4. Enter the number of transactions when prompted, and follow the on-screen instructions to input the details (ID, Amount, Time, and Location).
-
-## Features Included
-
-* **Interactive Input**: Prompts the user step-by-step for transaction data.
-* **Summary Report**: Displays a detailed breakdown of each transaction along with total counts and the fraud percentage.
-* **Visual Charts**: Automatically creates a Bar Plot and a Pie Chart at the end to visually compare Fraud vs Normal transactions.
+## Results and Conclusion
+The models are ranked based on their R2 Score. The model with the highest R2 and lowest MAE/MSE is selected as the best predictor for PSX stock prices.
